@@ -17,7 +17,7 @@ The current version is a **single-cycle** implementation: every instruction is f
 - [x] Program counter
 - [x] Control unit (main decoder, ALU decoder, controller wrapper)
 - [x] Datapath
-- [ ] Top-level integration
+- [x] Top-level integration
 - [ ] Top-level testbench and test programs
 - [ ] Remaining RV32I instructions (JALR, LUI, AUIPC)
 - [ ] FPGA implementation (Artix-7)
