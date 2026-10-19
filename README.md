@@ -7,7 +7,12 @@ The current version is a **single-cycle** implementation: every instruction is f
 
 ## Status
 
-**In progress.** The hardware components are written; integration and full-system verification are underway.
+**In progress.** The single-cycle core is integrated and passes a self-checking
+end-of-run testbench. A fuller verification environment and the remaining RV32I
+instructions are underway.
+
+Currently supported: `add`, `sub`, `and`, `or`, `xor`, `slt`, `sll`, `srl` (and
+their immediate forms), `lw`, `sw`, `beq`, `jal`
 
 - [x] ALU
 - [x] Register file (32 × 32-bit)
@@ -18,8 +23,13 @@ The current version is a **single-cycle** implementation: every instruction is f
 - [x] Control unit (main decoder, ALU decoder, controller wrapper)
 - [x] Datapath
 - [x] Top-level integration
-- [ ] Top-level testbench and test programs
-- [ ] Remaining RV32I instructions (JALR, LUI, AUIPC)
+- [x] Self-checking end-of-run testbench and assembly test program (checks every
+      register, data memory, and final PC, including registers that must stay
+      unchanged to confirm taken branches and jumps)
+- [ ] SystemVerilog assertions (SVA) for core invariants
+- [ ] Golden reference model with lockstep, instruction-by-instruction comparison
+- [ ] Remaining RV32I instructions: `lui`, `auipc`, `jalr`, `bne`/`blt`/`bge`/`bltu`/`bgeu`,
+      `sra`/`srai`, `sltu`/`sltiu`, byte and halfword loads/stores
 - [ ] FPGA implementation (Artix-7)
 - [ ] 5-stage pipeline with hazard detection and forwarding
 

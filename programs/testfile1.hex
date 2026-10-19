@@ -14,4 +14,5 @@
 06300493  // 0x34  addi x9, x0, 99     should be SKIPPED
 0080056F  // 0x38  jal  x10, +8        x10 = 0x3C, jump -> 0x40
 06300593  // 0x3C  addi x11, x0, 99    should be SKIPPED
-00000063  // 0x40  beq  x0, x0, 0      done: loop here forever
+FFF00613  // 0x40  addi x12, x0, -1    x12 = 0xFFFFFFFF (negative-immediate test)
+00000063  // 0x44  beq  x0, x0, 0      done: loop here forever
