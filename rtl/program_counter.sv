@@ -1,5 +1,6 @@
 // Explanation on hardware level: a mux has 2 inputs, one is 4 and the value of PC and an adder that adds those values, the other input is target address. the selector is pc_src which comes from CU. then the output of the mux is connected to PC. PC only accepts that value from mux when clk signal happens.
 
+`default_nettype none
 module program_counter (
   
   input logic clk,

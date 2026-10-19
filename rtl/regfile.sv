@@ -1,3 +1,4 @@
+`default_nettype none
 module regfile (
   //32 register addresses needs 5 bits 
   input logic clk,

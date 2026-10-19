@@ -1,3 +1,4 @@
+`default_nettype none
 module sign_extender (
   
   input logic [31:0] instruction,

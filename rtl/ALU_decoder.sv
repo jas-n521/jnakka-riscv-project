@@ -1,6 +1,5 @@
-// Code your design here
 
-
+`default_nettype none
 module ALU_decoder (
   input logic [1:0] ALU_op, 
   input logic [31:0] instruction, 
@@ -27,14 +26,19 @@ module ALU_decoder (
       
       2'b10: begin
         // Check funct3/7
+        ALUControl = 'x;
         case (funct3) 
           
           3'b000: begin
-            // add or subtr: check funct7_5
-            if (funct7_5 == 1'b1) 
-              ALUControl = 4'b0001;
-            else if (funct7_5 == 1'b0)
-              ALUControl = 4'b0000;
+            // add or sub
+            // if opcode bit 5 is 1, 
+            if (instruction[5] == 1) begin 
+              if (funct7_5 == 1'b1) 
+                ALUControl = 4'b0001;
+              else if (funct7_5 == 1'b0)
+                ALUControl = 4'b0000;
+            end 
+            else ALUControl = 4'b0000;
           end 
           
           3'b111: begin 

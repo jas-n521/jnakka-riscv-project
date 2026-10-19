@@ -4,6 +4,7 @@
 // Read is combinational
 // Write is sequential, uses WE
 
+`default_nettype none
 module RAM (
   input logic memWrite,
   input logic [31:0] address,
@@ -14,7 +15,7 @@ module RAM (
   output logic [31:0] readData
 );
 
-  logic [32:0] memory [255:0];
+  logic [31:0] memory [255:0];
   
   always_ff @ (posedge clk or posedge rst) begin
     if (rst) begin

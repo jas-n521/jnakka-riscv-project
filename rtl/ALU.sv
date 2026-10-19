@@ -1,5 +1,6 @@
 //32 bit ALU
 //3 INPUTS, 2 OUTPUTS
+`default_nettype none
 module ALU (
   
   input logic [31:0] srcA,
@@ -18,6 +19,7 @@ module ALU (
   logic [31:0] shift_reg;
   
   always_comb begin
+    shift_reg = 32'b0;
         
     case (ALUControl) 
       
@@ -67,7 +69,7 @@ module ALU (
         // B is amount of positions to be shifted.
         
         shift_reg = srcA;
-        shift_reg = shift_reg << srcB;
+        shift_reg = shift_reg << srcB[4:0];
         
         ALUResult = shift_reg;
         
@@ -76,10 +78,24 @@ module ALU (
       4'b0111: begin
         //SRL
         shift_reg = srcA;
-        shift_reg = shift_reg >> srcB;
+        shift_reg = shift_reg >> srcB[4:0];
         
         ALUResult = shift_reg;
         
+      end 
+
+      4'b1000: begin
+        //SRA
+        //Not implemented yet.
+        ALUResult = 32'b0;
+      
+      end 
+
+      4'b1001: begin
+        //SLTU
+        // Not implemented yet.
+        ALUResult = 32'b0;
+
       end 
       
       default: begin
